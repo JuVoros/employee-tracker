@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
-const figlet = require("figlet");
 const cTable = require("console.table");
+const { opening } = require("./utils/ascii");
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -107,7 +107,7 @@ const addEmployee = () => {
               console.log("A new employee has been added to employee_db.");
             }
           );
-          questiosn();
+          questions();
         });
     });
   });
@@ -220,3 +220,60 @@ const updateEmployeeRole = () => {
     });
   });
 };
+const quit = () => {
+  console.log("END");
+  db.end();
+};
+
+const questions = () => {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        name: "choices",
+        message: "What would you like to do?",
+        choices: [
+          "View all employees",
+          "View all roles",
+          "View all depatments",
+          "Add employee",
+          "Add role",
+          "Update employee role",
+          "QUIT",
+        ],
+      },
+    ])
+    .then((answer) => {
+      switch (answer.choices) {
+        case "View all employees":
+          viewAllEmployees();
+          break;
+        case "View all roles":
+          viewAllRoles();
+          break;
+        case "View all departments":
+          viewAllDepartments();
+          break;
+        case "Add employee":
+          addEmployee();
+          break;
+        case "Add role":
+          addRole();
+          break;
+        case "Update employee role":
+          updateEmployeeRole();
+          break;
+        case "QUIT":
+          quit();
+          break;
+      }
+    });
+};
+console.log('\n');
+const init = () => {
+  console.log(opening);
+  questions();
+};
+console.log('\n');
+
+init();
