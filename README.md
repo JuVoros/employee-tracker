@@ -6,14 +6,18 @@
 
 ## Description
 
+This program is to be used to efficiently and effectively view and manage all your employees in a company. It is easy to use and requires very little on the user to use this program. The user can not only add employees but add roles, departments, and then the ability to edit any of them.
+
 ## Table of Contents
 1. [Installation](#installation)
 2. [Usage](#usage)
-3. [Credits](#credits)
 4. [License](#license)
 
 ## Installation
+To install all the neccessary utilites for this program you must have node, npm, and mysql, all ther other npm packages will eb able to be downloaded which i will explain later. After you fork this repo and have installed all the necessary programs  run `npm install` within the terminal to install all the necessary packages. Next what ypou want to do it to go in to the `seeds.sql` file and insert and edit all the roles, departments and employees you want to select from. To do this you just run `mysql -u root -p` enter `password` then run `source schema.sql;` then `source seed.sql;` and all your information will be uplaoded to the tables. To finally run the program all you have to do is run `npm start`.
 ## Usage
+Here is the link to a video on how to use the program itself and navigate between adding and viewing all the data.
+https://youtu.be/McApkc4yi9M
 
 ## License
 MIT License
